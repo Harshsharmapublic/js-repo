@@ -24,12 +24,15 @@
     myHeading.style.color = "black";
     console.log(myHeading.style.color);
     const myButton = document.getElementById("myButton");
+    let count = 0;
+    const paragraph = document.getElementById("paragraph"); 
      myButton.addEventListener("click", function() {
+        count++;
         myHeading.style.color = "white";
         myButton.innerText = "please wait...";
         document.body.style.backgroundColor = "black";
         paragraph.style.color = "white";
-        paragraph.innerText= paragraph.innerText+1;
+        paragraph.innerText= count;
     });
 </script>
-</html>
+</html>git
