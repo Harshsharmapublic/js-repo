@@ -1,0 +1,143 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To do list</title>
+</head>
+<body>
+    <h2>To Do List</h2>
+    <input type="text" id="task" placeholder="Enter task">
+    <button onclick="addTask()">Add Task</button>
+    <ul id="list"></ul>
+<script>
+    const list = document.querySelector("list")
+    const taskInput = document.querySelector("task")
+    const addButton = document.querySelector("button")
+function addTask() {
+    const taskInput = document.getElementById("task")
+    const task = taskInput.value
+    if (task === "") {
+        alert("Please enter a task")
+        return
+    }
+    const list = document.getElementById("list")
+    const li = document.createElement("li")
+    li.innerText = task
+    list.appendChild(li)
+    taskInput.value = ""
+}
+
+</script>
+    
+</body>
+</html> -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>To-Do List</title>
+
+<!-- Tailwind CDN -->
+<script src="https://cdn.tailwindcss.com"></script>
+
+</head>
+
+<body class="bg-gray-100">
+
+<div class="max-w-md mx-auto bg-white shadow-lg rounded-lg overflow-hidden mt-16">
+
+<div class="px-4 py-2">
+<h1 class="text-gray-800 font-bold text-2xl uppercase">To-Do List</h1>
+</div>
+
+<div class="w-full max-w-sm mx-auto px-4 py-2">
+
+<div class="flex items-center border-b-2 border-teal-500 py-2">
+
+<input
+id="taskInput"
+class="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none"
+type="text"
+placeholder="Add a task">
+
+<button
+id="addBtn"
+class="flex-shrink-0 bg-teal-500 hover:bg-teal-700 border-teal-500 hover:border-teal-700 text-sm border-4 text-white py-1 px-2 rounded">
+
+Add
+
+</button>
+
+</div>
+
+</div>
+
+<ul id="taskList" class="divide-y divide-gray-200 px-4"></ul>
+
+</div>
+
+<script>
+
+const input = document.getElementById("taskInput")
+const addBtn = document.getElementById("addBtn")
+const list = document.getElementById("taskList")
+
+function addTask(){
+
+const task = input.value.trim()
+
+if(task === ""){
+alert("Please enter a task")
+return
+}
+
+const li = document.createElement("li")
+li.className = "py-4"
+
+li.innerHTML = `
+<div class="flex items-center">
+<input type="checkbox" class="h-4 w-4 text-teal-600 border-gray-300 rounded">
+<span class="ml-3 text-lg text-gray-900">${task}</span>
+</div>
+`
+
+list.appendChild(li)
+
+input.value = ""
+
+}
+
+addBtn.addEventListener("click", addTask)
+
+input.addEventListener("keydown", function(e){
+if(e.key === "Enter"){
+addTask()
+}
+})
+
+// task complete toggle
+list.addEventListener("change", function(e){
+
+if(e.target.type === "checkbox"){
+
+const text = e.target.nextElementSibling
+
+if(e.target.checked){
+text.classList.add("line-through","text-gray-400")
+}
+else{
+text.classList.remove("line-through","text-gray-400")
+}
+
+}
+
+})
+
+</script>
+
+</body>
+</html>
